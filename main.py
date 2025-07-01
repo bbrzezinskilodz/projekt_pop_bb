@@ -97,12 +97,15 @@ def create_userw():
     u=listbox_lista_obiketow.index(ACTIVE)
     d=waterf[u].name
 
+    for idx,val in enumerate(worker):
+        worker[idx].marker.delete()
+
     for idx,val in enumerate(userw):
         if userw[idx].location2==d:
             val=temporarys(name=userw[idx].name,location=userw[idx].location)
             temporary.append(val)
         userw[idx].marker.delete()
-        worker[idx].marker.delete()
+
 
     show_userw_temp()
     button_pokaz_szczegoly_obiektu_userw.configure(command=show_userw_temp_details)
@@ -134,11 +137,14 @@ def create_workers():
     u = listbox_lista_obiketow.index(ACTIVE)
     d = waterf[u].name
 
+    for idx,val in enumerate(userw):
+        userw[idx].marker.delete()
+
     for idx, val in enumerate(worker):
         if worker[idx].location2 == d:
             val = temporarys(name=worker[idx].name, location=worker[idx].location)
             temporary.append(val)
-        userw[idx].marker.delete()
+
         worker[idx].marker.delete()
 
     show_worker_temp()
@@ -167,6 +173,13 @@ def show_worker_temp_details():
 def restore():
     show_userw()
     show_worker()
+
+    for idx,val in enumerate(userw):
+        userw[idx].marker.delete()
+
+    for idx,val in enumerate(worker):
+        worker[idx].marker.delete()
+
     for idx,val in enumerate(temporary):
         temporary[idx].marker.delete()
 
